@@ -113,3 +113,25 @@ body>header,body>.wrap,body>.footer{display:none!important}#mobile-site{display:
 @media(max-width:767px) and (prefers-reduced-motion:reduce){
  #mobile-site .m-course-intro.m-intro-reveal{opacity:1;transform:none;transition:none}
 }
+
+/* Mobile course emphasis and hand-drawn highlights. */
+@media(max-width:767px){
+ #mobile-site .m-course-methods>h2,#mobile-site .m-ielts-techniques>h2,#mobile-site .m-course-speech>h2{background:#1958d7;color:#fff;padding:12px 14px;border-radius:12px}
+ #mobile-site .m-course-speech{background:#ffdf42;border-color:#f0cf32}
+ #mobile-site .m-course-speech .m-speech-lead,#mobile-site .m-course-speech li,#mobile-site .m-course-speech strong,#mobile-site .m-speech-target>span{color:#102e78}
+ #mobile-site .m-ielts-training{background:#1958d7;border-color:#1958d7;color:#fff}
+ #mobile-site .m-ielts-training>h2{background:#ffdf42;color:#102e78;padding:12px 14px;border-radius:12px}
+ #mobile-site .m-ielts-training .m-ielts-points h3,#mobile-site .m-ielts-training .m-ielts-points strong,#mobile-site .m-ielts-training .m-ielts-points li>span{color:#fff}
+ #mobile-site .m-ielts-training .m-ielts-points li{border-color:#ffffff40}
+ #mobile-site .m-handline{position:relative;display:inline-block;padding-bottom:9px;max-width:100%}
+ #mobile-site .m-handline svg{position:absolute;left:0;bottom:0;width:100%;height:9px;overflow:visible;pointer-events:none}
+ #mobile-site .m-handline path{fill:none;stroke:#ffcf24;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+ #mobile-site .m-speech-target .m-handline path{stroke:#1958d7}
+ #mobile-site .m-handline.is-line-pending path{stroke-dasharray:100;stroke-dashoffset:100}
+ #mobile-site .m-handline.is-line-drawn path{stroke-dashoffset:0;transition:stroke-dashoffset .8s ease-out}
+}
+@media(prefers-reduced-motion:reduce){#mobile-site .m-handline.is-line-pending path{stroke-dashoffset:0;transition:none}}
+@media(max-width:767px){
+ #mobile-site .m-speech-target strong.m-handline{display:inline-block}
+ #mobile-site .m-ielts-points strong.m-handline{display:table}
+}
