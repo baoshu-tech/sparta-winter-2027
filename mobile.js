@@ -19,6 +19,22 @@ root.querySelectorAll('.m-paged').forEach(view=>{
  track.addEventListener('scroll',()=>{const step=stride();if(step>0){page=Math.max(0,Math.min(cards.length-1,Math.round(track.scrollLeft/step)));update();}},{passive:true});
  track.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();move(e.key==='ArrowRight'?1:-1);}});update();
 });
+// Reveal each course introduction once, when it becomes visible on mobile.
+if ('IntersectionObserver' in window) {
+ const intros = root.querySelectorAll('.m-course-intro');
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting && mq.matches) {
+    entry.target.classList.add('m-intro-revealed');
+    observer.unobserve(entry.target);
+   }
+  });
+ }, {threshold: 0.1});
+ intros.forEach(intro => {
+  intro.classList.add('m-intro-reveal');
+  observer.observe(intro);
+ });
+}
 function fromHash(){const hash=location.hash.slice(1);show(hash.startsWith('m-')?hash.slice(2):(map[hash]||'overview'),false);}
 window.addEventListener('popstate',fromHash);window.addEventListener('hashchange',fromHash);mq.addEventListener('change',()=>{pauseAll();motion();if(!mq.matches&&location.hash.startsWith('#m-'))nav({overview:'home',courses:'junior',schedule:'junior',environment:'home',history:'archive',feedback:'parents',signup:'junior'}[active],false);});
 document.addEventListener('visibilitychange',motion);new MutationObserver(motion).observe(modal,{attributes:true,attributeFilter:['open']});fromHash();

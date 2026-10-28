@@ -105,3 +105,11 @@ body>header,body>.wrap,body>.footer{display:none!important}#mobile-site{display:
 #mobile-site .m-ielts-training .m-ielts-points li{border-color:#edcfaa}
 #mobile-site .m-ielts-training .m-ielts-points strong,#mobile-site .m-ielts-training .m-ielts-points li>span{color:#a74a13}
 }
+
+@media(max-width:767px){
+ #mobile-site .m-course-intro.m-intro-reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease-out,transform .6s ease-out}
+ #mobile-site .m-course-intro.m-intro-revealed{opacity:1;transform:translateY(0)}
+}
+@media(max-width:767px) and (prefers-reduced-motion:reduce){
+ #mobile-site .m-course-intro.m-intro-reveal{opacity:1;transform:none;transition:none}
+}
